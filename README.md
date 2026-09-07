@@ -19,6 +19,8 @@ By the end, you should be able to explain *how* a blockchain and a smart contrac
 
 Before touching any code, you need a mental model of what's actually happening under the hood.
 
+> 📘 **Full lesson materials for this week** (elaborate explanations, real-life analogies, recommended videos, interactive practice sites, and take-home assignments for each topic below) live in [`curriculum/week-01/`](./curriculum/week-01/).
+
 - **Hashing (SHA-256 / Keccak-256):** A hash function takes any input (a file, a transaction, a word) and turns it into a fixed-length string of characters. The same input always produces the same output, but you can't work backwards from the output to figure out the input, and changing even one character of the input completely changes the output. This is what makes blockchain data tamper-evident — if someone changes old data, its hash changes, and that breaks the chain.
 - **Public/private key cryptography:** Your wallet is really just a pair of numbers — a private key (secret, never shared) and a public key (derived from it, safe to share). Your wallet *address* is derived from your public key. When you "sign" a transaction, you're using your private key to prove you authorized it, without ever revealing the key itself. Anyone can verify the signature using your public key.
 - **Blocks and chains:** A block is just a batch of transactions bundled together, along with a hash of the *previous* block. That's the "chain" part — each block points to the one before it. If you tried to alter a transaction in an old block, its hash would change, which would break every block after it. That's why blockchain data is considered immutable in practice.
