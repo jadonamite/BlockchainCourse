@@ -2,10 +2,11 @@
 
 This week has four topics. Go through them **in order** — each one builds on the last. For every topic, do this in sequence:
 
-1. Read the doc (plain-language explanation + real-life analogy).
+1. Read the doc — each one includes a plain-language explanation, a **worked example with real, reproducible output** (real computed hashes, a real signed message, a real 3-block chain, real historical attack data), a real-life analogy, and real-world use cases beyond blockchain (git, HTTPS, Kubernetes, password storage, and more).
 2. Watch the recommended video (15–20 min, not a deep technical deep-dive — just enough to reinforce the doc).
-3. Spend 15–20 minutes on the practice website — this is where the concept actually "clicks."
-4. Do the take-home assignment before moving to the next topic.
+3. Spend 15–20 minutes on the practice website *and* reproduce the worked example yourself in a terminal — this is where the concept actually "clicks." Every worked example in these docs was generated with tools already on your machine (`shasum`, `openssl`, `python3`, `git`) — nothing to install.
+4. Read the "Common misconceptions" section — these are the mistakes that trip people up in interviews and code review.
+5. Do the take-home assignment before moving to the next topic.
 
 | # | Topic | Doc |
 | --- | --- | --- |
