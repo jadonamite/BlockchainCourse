@@ -32,6 +32,8 @@ Before touching any code, you need a mental model of what's actually happening u
 
 ### Week 2 — Writing & Deploying Your First Smart Contract
 
+> 📘 **Full lesson materials for this week** (real, reproducible worked examples built from an actual deployed contract, plus real-world uses, misconceptions, and take-home assignments) live in [`curriculum/week-02/`](./curriculum/week-02/).
+
 - **What a smart contract actually is:** Just a program that lives at a specific address on the blockchain, with its own storage (state) and functions anyone can call. There's no magic — it's code that runs deterministically and whose execution and results are publicly verifiable.
 - **Solidity basics:** The main language for writing Ethereum-compatible contracts. Learn variables, functions, visibility (`public`/`private`/`external`/`internal`), and the special built-in variables `msg.sender` (who called this function) and `msg.value` (how much ETH they sent with the call).
 - **Tooling:** Start in **Remix** (a browser-based IDE) for the first couple of days just to get a feel for writing and deploying without any setup friction. Then move to **Foundry** — a local command-line toolkit (`forge` to build/test, `cast` to interact with contracts, `anvil` to run a local blockchain on your machine) which is what you'll actually use for real projects.
