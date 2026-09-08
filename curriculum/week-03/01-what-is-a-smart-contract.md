@@ -2,6 +2,8 @@
 
 ## Start here: a question, not a definition
 
+Week 2 gave you a first, code-free look at what a smart contract is and roughly how it works. This is the second, deeper pass — the same idea, but this time with real tools, so it stops being a description and becomes something you can inspect yourself.
+
 You're about to spend a week writing "smart contracts." Before writing a single line, it's worth pausing on a question most tutorials skip past: when people say a contract "lives on the blockchain," what does that actually mean? Is it a file sitting on a server somewhere? A program that's running right now, waiting for you? Let's find out by looking at one that actually exists, instead of being told the answer first.
 
 ## Notice it, before we name it

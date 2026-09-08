@@ -92,7 +92,7 @@ Notice: the newer commit's `parent` field is exactly the older commit's hash. If
 
 ### What a block explorer actually is
 
-All of this data — every block, every transaction, every address — is public. A **block explorer** (the most well-known for Ethereum is **Etherscan**) is just a website that reads this public data and displays it in a human-readable way, so you don't have to run your own node or manually decode raw data to see what's happening on the network. It's the closest thing blockchain has to a search engine, and it's how you'll debug your own smart contracts starting in Week 2.
+All of this data — every block, every transaction, every address — is public. A **block explorer** (the most well-known for Ethereum is **Etherscan**) is just a website that reads this public data and displays it in a human-readable way, so you don't have to run your own node or manually decode raw data to see what's happening on the network. It's the closest thing blockchain has to a search engine, and it's how you'll debug your own smart contracts starting in Week 3.
 
 On a transaction page, you'll typically see:
 
@@ -100,7 +100,7 @@ On a transaction page, you'll typically see:
 - **Block:** which block this transaction was included in.
 - **From / To:** the sending address, and the receiving address (which might be another person's wallet, or a smart contract's address).
 - **Value:** how much of the native currency (ETH, on Ethereum) was sent.
-- **Gas fee:** how much was paid to have this transaction processed (more on *why* gas exists in Week 2, when you start deploying contracts).
+- **Gas fee:** how much was paid to have this transaction processed (more on *why* gas exists in Week 3, when you start deploying contracts).
 
 ## Real-life analogy
 

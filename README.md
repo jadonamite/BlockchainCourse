@@ -2,18 +2,18 @@
 
 The goal of this curriculum is **understanding**, not memorization. A lot of people learn blockchain development by copy-pasting Solidity templates they don't understand. That approach falls apart the moment something doesn't work exactly like the tutorial — which, in a live hackathon, is most of the time.
 
-This course is split into two halves, four weeks each:
+This course is split into two halves:
 
-- **Half 1 (Weeks 1–4): Basics & Core Concepts.** Everything you need to walk into a hackathon and actually build something — not just glue code together, but understand what each piece is doing.
-- **Half 2 (Weeks 5–8): Advanced Topics.** What separates a working prototype from something closer to production: security, scaling, and the wider ecosystem.
+- **Half 1 (Weeks 1–5): Basics & Core Concepts.** Everything you need to walk into a hackathon and actually build something — not just glue code together, but understand what each piece is doing, and *why* it's built the way it is before you ever write a line of it yourself.
+- **Half 2 (Weeks 6–9): Advanced Topics.** What separates a working prototype from something closer to production: security, scaling, and the wider ecosystem.
 
 By the end, you should be able to explain *how* a blockchain and a smart contract actually work — not just recite the words.
 
 ---
 
-## Half 1: Basics & Core Concepts (Weeks 1–4)
+## Half 1: Basics & Core Concepts (Weeks 1–5)
 
-**Goal of this half:** by Week 4, you can build and ship a small working dApp (a website that talks to a smart contract) — the minimum toolkit for a hackathon.
+**Goal of this half:** by Week 5, you can build and ship a small working dApp (a website that talks to a smart contract) — the minimum toolkit for a hackathon.
 
 ### Week 1 — How a Blockchain Actually Works
 
@@ -30,11 +30,26 @@ Before touching any code, you need a mental model of what's actually happening u
 
 ---
 
-### Week 2 — Writing & Deploying Your First Smart Contract
+### Week 2 — Decentralization, DAOs & What A Smart Contract Is
 
-> 📘 **Full lesson materials for this week** (real, reproducible worked examples built from an actual deployed contract, plus real-world uses, misconceptions, and take-home assignments) live in [`curriculum/week-02/`](./curriculum/week-02/).
+Week 1 gave you the raw cryptographic ingredients. Before you write a single line of Solidity, this week answers a different question: why go through all that trouble in the first place? **There is no code this week, on purpose** — it's the conceptual bridge between "I understand hashing and signing" and "I can write and deploy a contract that puts them to use."
 
-- **What a smart contract actually is:** Just a program that lives at a specific address on the blockchain, with its own storage (state) and functions anyone can call. There's no magic — it's code that runs deterministically and whose execution and results are publicly verifiable.
+> 📘 **Full lesson materials for this week** (including the real 2016 "DAO hack" case study — the actual origin of the Ethereum/Ethereum Classic split from Week 1) live in [`curriculum/week-02/`](./curriculum/week-02/).
+
+- **Decentralization:** What problem it actually solves — not "more computers," but *no single party who can unilaterally change the rules or the recorded history*. The difference between centralized, distributed, and decentralized systems, with everyday examples (a company's cloud servers vs. Wikipedia vs. BitTorrent).
+- **Types & forms of decentralization:** Decentralization isn't one property — it's three separate axes (architectural, political, logical), and a blockchain can score differently on each. Plus concrete forms: DeFi, decentralized storage, decentralized identity, and DAOs.
+- **DAOs:** What an organization looks like when its rules are enforced by a smart contract instead of a CEO or a board — including the real story of "The DAO," its 2016 exploit, and the hard fork that split Ethereum from Ethereum Classic.
+- **What a smart contract is, looks like, and how it works:** A first, code-free look at an actual contract's shape, and how a network with no central computer can still "run" it identically everywhere.
+
+**Deliverable:** No code. Write a short explainer, in your own words, of what a DAO is and why The DAO's 2016 exploit led to a genuine philosophical split in the Ethereum community rather than a simple bug fix.
+
+---
+
+### Week 3 — Writing & Deploying Your First Smart Contract
+
+> 📘 **Full lesson materials for this week** (real, reproducible worked examples built from an actual deployed contract, plus real-world uses, misconceptions, and take-home assignments) live in [`curriculum/week-03/`](./curriculum/week-03/).
+
+- **What a smart contract actually is (this time, hands-on):** The same idea from Week 2, but now you inspect real compiled bytecode and real on-chain storage yourself, instead of reading about them.
 - **Solidity basics:** The main language for writing Ethereum-compatible contracts. Learn variables, functions, visibility (`public`/`private`/`external`/`internal`), and the special built-in variables `msg.sender` (who called this function) and `msg.value` (how much ETH they sent with the call).
 - **Tooling:** Start in **Remix** (a browser-based IDE) for the first couple of days just to get a feel for writing and deploying without any setup friction. Then move to **Foundry** — a local command-line toolkit (`forge` to build/test, `cast` to interact with contracts, `anvil` to run a local blockchain on your machine) which is what you'll actually use for real projects.
 - **Deploying & verifying:** Deploy a contract to a public testnet (a free, fake-money version of a real network, used for testing) and verify its source code on a block explorer so anyone can read what it does.
@@ -43,7 +58,7 @@ Before touching any code, you need a mental model of what's actually happening u
 
 ---
 
-### Week 3 — Tokens & Reusable Building Blocks
+### Week 4 — Tokens & Reusable Building Blocks
 
 - **ERC-20 (fungible tokens):** The standard interface that defines what a "token" is on Ethereum — things like `transfer`, `balanceOf`, `totalSupply`. Any token following this standard automatically works with every wallet and exchange that supports ERC-20, which is the whole point of a standard.
 - **ERC-721 (NFTs):** Same idea, but for unique, non-interchangeable tokens — each one has its own ID and can point to unique metadata (an image, a name, attributes).
@@ -54,7 +69,7 @@ Before touching any code, you need a mental model of what's actually happening u
 
 ---
 
-### Week 4 — Connecting a Frontend: Your First Real dApp
+### Week 5 — Connecting a Frontend: Your First Real dApp
 
 This is the week everything comes together — the point where you go from "I can deploy a contract" to "I can build the thing people at a hackathon actually demo."
 
@@ -64,19 +79,19 @@ This is the week everything comes together — the point where you go from "I ca
 - **Wallet connection:** MetaMask (and similar wallets) inject a provider into the browser page, which is how your site asks the user to connect their wallet and approve transactions.
 - **Transaction states:** A transaction isn't instant. It goes from *submitted* → *pending* (waiting to be included in a block) → *confirmed* (or *failed*). A good dApp shows the user what's happening at each stage instead of leaving them staring at a frozen button.
 
-**Deliverable:** Build a minimal full-stack dApp: a simple webpage that connects a wallet and reads/writes to the contract you deployed in Week 2 or 3 (e.g., a page that shows your token balance and lets you send tokens to another address). This is your hackathon starter template — from here on, most hackathon projects are variations on this same pattern.
+**Deliverable:** Build a minimal full-stack dApp: a simple webpage that connects a wallet and reads/writes to the contract you deployed in Week 3 or 4 (e.g., a page that shows your token balance and lets you send tokens to another address). This is your hackathon starter template — from here on, most hackathon projects are variations on this same pattern.
 
 ---
 
-## Half 2: Advanced Topics (Weeks 5–8)
+## Half 2: Advanced Topics (Weeks 6–9)
 
 **Goal of this half:** understand what separates a toy project from something closer to production-grade, and how the wider ecosystem (security, scaling, infrastructure) fits together.
 
-### Week 5 — Security: Thinking Like an Attacker
+### Week 6 — Security: Thinking Like an Attacker
 
 Smart contracts are unusual in that anyone can read the code, and anyone can attack it — there's no obscurity to hide behind, and mistakes are often irreversible and directly cost money.
 
-- **Reentrancy:** The classic exploit. If contract A calls out to contract B before finishing its own bookkeeping (e.g., before updating a balance), a malicious contract B can call back into contract A and repeat an action (like a withdrawal) before the first one is even recorded. The fix is a simple rule: update your own state *before* making external calls.
+- **Reentrancy:** The classic exploit — and the exact bug class behind Week 2's DAO hack case study. If contract A calls out to contract B before finishing its own bookkeeping (e.g., before updating a balance), a malicious contract B can call back into contract A and repeat an action (like a withdrawal) before the first one is even recorded. The fix is a simple rule: update your own state *before* making external calls.
 - **Access control bugs:** Forgetting to restrict who can call a sensitive function (e.g., anyone can call `withdrawAllFunds()` because there's no check that the caller is the owner).
 - **Integer overflow/underflow:** Less of an issue since Solidity 0.8+ (it now reverts automatically on overflow), but you should still understand what it *was* and why it mattered, since older contracts and other languages still have this risk.
 - **`tx.origin` vs `msg.sender`:** `tx.origin` is the original human who started the transaction chain; `msg.sender` is whoever called this specific function directly (which could be another contract). Using `tx.origin` for authorization is a common bug that can be exploited via phishing-style contract tricks.
@@ -86,9 +101,9 @@ Smart contracts are unusual in that anyone can read the code, and anyone can att
 
 ---
 
-### Week 6 — Advanced Contract Design
+### Week 7 — Advanced Contract Design
 
-- **Proxies & upgradeability:** Once a contract is deployed, its code normally can't change. A proxy pattern gets around this: users interact with a fixed "proxy" address that forwards (delegates) all calls to a separate "logic" contract, which *can* be swapped out later. This is how teams fix bugs or add features to contracts that are already live.
+- **Proxies & upgradeability:** Once a contract is deployed, its code normally can't change — this is the exact limitation Week 2's DAO hack ran into. A proxy pattern gets around this: users interact with a fixed "proxy" address that forwards (delegates) all calls to a separate "logic" contract, which *can* be swapped out later. This is how teams fix bugs or add features to contracts that are already live.
 - **Multi-sig & access control:** Instead of one private key controlling something valuable, require multiple approvals (e.g., 3 of 5 signers) before an action executes. Reduces the blast radius if any single key is compromised.
 - **Contract-to-contract calls & oracles:** Contracts can call other contracts using interfaces (a description of what functions to expect) and low-level calls. But contracts can't natively access anything outside the blockchain — so if a contract needs a real-world price (e.g., ETH/USD), it relies on an **oracle** (like Chainlink) to bring that data on-chain.
 
@@ -96,7 +111,7 @@ Smart contracts are unusual in that anyone can read the code, and anyone can att
 
 ---
 
-### Week 7 — Scaling: Layer 2s & Gas
+### Week 8 — Scaling: Layer 2s & Gas
 
 - **The scaling problem:** Ethereum's main network (Layer 1) can only process a limited number of transactions per second, and demand for block space drives fees up. This is often called the blockchain trilemma — trading off decentralization, security, and scalability.
 - **Rollups (Layer 2):** Networks like Arbitrum, Base, and Optimism (optimistic rollups) or zkSync and Scroll (ZK rollups) process transactions off of Ethereum's main chain, then post a compressed summary back to Ethereum for security. Result: transactions that are much cheaper and faster, while still inheriting most of Ethereum's security guarantees. You don't need to implement rollup internals — just understand *why* they exist and the basic difference between the optimistic and ZK approaches (optimistic assumes transactions are valid unless challenged; ZK proves they're valid upfront using cryptographic proofs).
@@ -106,7 +121,7 @@ Smart contracts are unusual in that anyone can read the code, and anyone can att
 
 ---
 
-### Week 8 — Modern Infrastructure & Capstone
+### Week 9 — Modern Infrastructure & Capstone
 
 - **Indexing:** Querying a blockchain directly for historical data (e.g., "show me every transfer this contract has ever made") is slow and expensive at scale. Indexing services like **The Graph** continuously watch the chain, organize the data into a queryable database, and let your frontend fetch it instantly via GraphQL instead of hammering a node.
 - **Account abstraction (ERC-4337):** Normal wallets (EOAs — Externally Owned Accounts) are just a key pair; they can't have custom logic like spending limits, social recovery, or letting someone else pay your gas fee. Smart accounts fix this by making the wallet itself a smart contract, opening the door to gasless transactions (a "paymaster" covers the fee) and other UX improvements. You don't need to build a bundler or paymaster from scratch — just understand the pieces (EntryPoint contract, UserOperations, Paymasters) and see a working demo.
@@ -136,4 +151,4 @@ Smart contracts are unusual in that anyone can read the code, and anyone can att
 2. **Testnet first, always.** Never deploy something you haven't tested locally and on a testnet.
 3. **No frontend before your contract works from the command line.** You should be able to deploy and call a contract using `cast` before you ever build UI around it.
 4. **Every contract gets at least a basic test.** An untested contract is an unfinished contract.
-5. **Treat every external call as a potential attack.** By Week 5, this should be instinct, not something you have to consciously remember.
+5. **Treat every external call as a potential attack.** By Week 6, this should be instinct, not something you have to consciously remember.

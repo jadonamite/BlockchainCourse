@@ -1,54 +1,22 @@
-# Week 2: Writing & Deploying Your First Smart Contract
+# Week 2: Decentralization, DAOs & What A Smart Contract Is
 
-This week has four topics, and — unlike a reference manual — each one is written as a **teaching sequence**, not a glossary. Every topic follows the same shape:
+Week 1 gave you the raw cryptographic ingredients — hashing, signing, chained blocks, consensus. This week answers a different question: **why go through all that trouble in the first place?** What does decentralization actually buy you, what does it look like when an entire *organization* is built on it, and what does the thing everyone keeps calling a "smart contract" actually look like — before you ever write one yourself?
 
-1. **A question or problem first** — before any jargon, something you'd genuinely wonder.
-2. **Notice it, before we name it** — a real, runnable example where you observe the behavior yourself.
-3. **Now it has a name** — the technical term arrives as a label for something you already have a feel for, not cold.
-4. **Check your understanding** — a question with a pause built in. Try to answer before reading on.
-5. **Connect it** — where this shows up in the real world, and what it sets up for later.
+There is **no code this week.** That's deliberate. Week 3 is where you write and deploy a real contract — and it'll make far more sense once you've seen, conceptually, what you're building and why.
+
+Same teaching sequence as every doc in this course:
+
+1. **A question or problem first** — before any jargon.
+2. **Notice it, before we name it** — a concrete example before the term arrives.
+3. **Now it has a name** — the label, once you already have the feel for it.
+4. **Check your understanding** — a question with a pause built in.
+5. **Connect it** — real world, and what it sets up for later.
 
 | # | Topic | Doc |
 | --- | --- | --- |
-| 1 | What A Smart Contract Actually Is | [01-what-is-a-smart-contract.md](./01-what-is-a-smart-contract.md) |
-| 2 | Solidity Fundamentals | [02-solidity-fundamentals.md](./02-solidity-fundamentals.md) |
-| 3 | Tooling — Remix to Foundry | [03-tooling-remix-to-foundry.md](./03-tooling-remix-to-foundry.md) |
-| 4 | Deploying & Verifying | [04-deploying-and-verifying.md](./04-deploying-and-verifying.md) |
+| 1 | Decentralization — What Problem Does It Actually Solve? | [01-decentralization.md](./01-decentralization.md) |
+| 2 | Types & Forms of Decentralization | [02-types-and-forms-of-decentralization.md](./02-types-and-forms-of-decentralization.md) |
+| 3 | DAOs — Decentralization You Can Actually Join | [03-daos.md](./03-daos.md) |
+| 4 | What A Smart Contract Is, Looks Like, And How It Works | [04-what-is-a-smart-contract.md](./04-what-is-a-smart-contract.md) |
 
-**Every worked example this week comes from one real contract**, `Counter.sol`, that was actually written, compiled, tested, deployed to a local chain, and interacted with while writing these docs — not typed up from memory. The contract:
-
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.24;
-
-contract Counter {
-    uint256 public count;
-    address public immutable owner;
-
-    error NotOwner(address caller);
-
-    event CountIncremented(address indexed by, uint256 newCount);
-    event CountReset(address indexed by);
-
-    constructor() {
-        owner = msg.sender;
-    }
-
-    function increment() public {
-        count += 1;
-        emit CountIncremented(msg.sender, count);
-    }
-
-    function reset() public {
-        if (msg.sender != owner) {
-            revert NotOwner(msg.sender);
-        }
-        count = 0;
-        emit CountReset(msg.sender);
-    }
-}
-```
-
-By the end of the week, you should be able to write, test, deploy, and verify something like this yourself — and, more importantly, explain *why* each line is written the way it is.
-
-**Week 2 deliverable:** write, test locally, and deploy this (or your own similar) contract to a public testnet. Verify it on a block explorer.
+These four topics build on each other in order, and the last one hands off directly into Week 3. By the end of this week you should be able to look at a few lines of Solidity and say what it's for and roughly how it runs — without having written a single line yourself yet.
